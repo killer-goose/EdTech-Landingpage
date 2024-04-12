@@ -14,7 +14,6 @@ export default function App() {
           <Route path='*' element={<NotFound />} />
         </Route>
       </Routes>
-      <h1>App</h1>
     </BrowserRouter>
   )
 }
