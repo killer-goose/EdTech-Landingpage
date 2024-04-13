@@ -7,7 +7,10 @@ export default {
     extend: {
       colors: {
         text: {
-          gray: '#656565'
+          gray: {
+            200: 'hsl(0, 0%, 40%)',
+            400: 'hsl(0, 0%, 25%)',
+          },
         },
         primary: {},
         secondary: {},

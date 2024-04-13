@@ -58,7 +58,7 @@ function FeatureCard({
       >
         <div>
           <h3 className='mb-2 font-light text-text-gray'>{subtitle}</h3>
-          <h2 className='text-2xl md:text-3xl'>{heading}</h2>
+          <h2 className='text-2xl lg:text-3xl'>{heading}</h2>
         </div>
         <p className='font-light text-neutral lg:text-lg'>{body}</p>
       </div>
