@@ -2,6 +2,15 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer components {
+  .btn-ghost-custom {
+    @apply btn btn-sm btn-ghost font-normal;
+  }
+  .btn-neutral-custom {
+    @apply btn btn-sm btn-neutral font-normal;
+  }
+}
+
 body {
   font-family: 'Kanit', sans-serif;
 }

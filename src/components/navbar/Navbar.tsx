@@ -4,7 +4,7 @@ import Logo from '../../assets/Logo'
 export default function Navbar() {
   return (
     // use container margins throughout, at lg, use your own rules
-    <nav className='relative mt-4 max-w-[1920px] px-4 sm:px-5 md:px-8'>
+    <nav className='relative mt-6 max-w-[1920px] px-6 md:px-8 lg:px-12'>
       <OffCanvas />
       {/* hamburger */}
       <label
@@ -31,21 +31,25 @@ export default function Navbar() {
           <Logo />
         </span>
         <div className='hidden justify-between gap-6 sm:flex'>
-          <a href='#' className='btn-ghost btn btn-sm font-normal'>
-            Courses
-          </a>
-          <a href='#' className='btn-ghost btn btn-sm font-normal'>
-            Instructors
-          </a>
-          <a href='#' className='btn-ghost btn btn-sm font-normal'>
-            Pricing
-          </a>
+          {[
+            { name: 'Courses', route: '/' },
+            { name: 'Instructors', route: '/' },
+            { name: 'Pricing', route: '/' },
+          ].map(({ name, route }) => (
+            <Link
+              key={name}
+              to={route}
+              className='btn-ghost btn btn-sm font-normal tracking-wider'
+            >
+              {name}
+            </Link>
+          ))}
         </div>
         <div className='hidden gap-3 sm:flex'>
-          <Link to={'/'} className='btn btn-sm font-normal'>
+          <Link to={'/'} className='btn-ghost-custom text-base'>
             Login
           </Link>
-          <Link to={'/'} className='btn btn-sm btn-neutral font-normal'>
+          <Link to={'/'} className='btn-neutral-custom text-base'>
             Register
           </Link>
         </div>

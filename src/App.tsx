@@ -1,7 +1,8 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import Navbar from './components/navbar/Navbar'
 import NotFound from './pages/NotFound'
-import Home from './pages/Home'
+import Container from './components/Container'
+import Home from './pages/home/Home'
 
 export default function App() {
   return (
@@ -9,7 +10,7 @@ export default function App() {
       <Navbar />
 
       <Routes>
-        <Route path='/'>
+        <Route path='/' element={<Container />}>
           <Route index element={<Home />} />
           <Route path='*' element={<NotFound />} />
         </Route>
