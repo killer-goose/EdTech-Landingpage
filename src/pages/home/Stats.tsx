@@ -4,7 +4,7 @@ import Users from '../../assets/Users'
 
 export default function Stats() {
   return (
-    <div className='stats-container mx-auto my-16 flex max-w-4xl justify-between gap-8 overflow-auto lg:my-36'>
+    <section className='stats mx-auto my-28 flex max-w-4xl justify-between gap-8 overflow-auto lg:my-44'>
       {/* cards */}
       <div className='stat-card flex items-center gap-3'>
         <span className='icon inline-block rounded-md bg-neutral p-1.5 text-base-200 sm:p-2.5'>
@@ -35,6 +35,6 @@ export default function Stats() {
           <h3>Students&nbsp;enrolled</h3>
         </div>
       </div>
-    </div>
+    </section>
   )
 }

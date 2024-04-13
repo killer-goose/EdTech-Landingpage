@@ -142,7 +142,7 @@ function CourseCard({ name, rating, cost, description, startDate }: T) {
           <span className='flex'>
             {Array(rating)
               .fill(0)
-              .map((x, i) => (
+              .map((_, i) => (
                 <span key={i}>
                   <StarIcon />
                 </span>
