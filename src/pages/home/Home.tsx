@@ -1,6 +1,7 @@
 import Courses from './Courses'
 import Features from './Features'
 import Main from './Main'
+import Stats from './Stats'
 
 export default function Home() {
   return (
@@ -8,6 +9,7 @@ export default function Home() {
       <Main />
       <Features />
       <Courses />
+      <Stats />
     </>
   )
 }
