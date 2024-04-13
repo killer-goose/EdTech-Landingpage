@@ -6,6 +6,9 @@ export default {
   theme: {
     extend: {
       colors: {
+        text: {
+          gray: '#656565'
+        },
         primary: {},
         secondary: {},
       },
