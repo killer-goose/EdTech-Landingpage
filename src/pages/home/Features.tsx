@@ -19,7 +19,7 @@ export default function Features() {
   return (
     <>
       <section className='infinite-brand-slider mx-auto my-28 max-w-max'>
-        <h1 className='mx-auto mb-8 w-max text-lg text-text-gray md:text-xl lg:text-2xl'>
+        <h1 className='text-text-gray mx-auto mb-8 w-max text-lg md:text-xl lg:text-2xl'>
           Organizations that trust our services
         </h1>
         <img src='./../../../src/assets/brands.png' alt='brands' />
@@ -57,7 +57,7 @@ function FeatureCard({
         className={`feature-card-text flex flex-col gap-5 lg:py-14 ${order ? 'order-2' : ''}`}
       >
         <div>
-          <h3 className='mb-2 font-light text-text-gray'>{subtitle}</h3>
+          <h3 className='text-text-gray mb-2 font-light'>{subtitle}</h3>
           <h2 className='text-2xl lg:text-3xl'>{heading}</h2>
         </div>
         <p className='font-light text-neutral lg:text-lg'>{body}</p>

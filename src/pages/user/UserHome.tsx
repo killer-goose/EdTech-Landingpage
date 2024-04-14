@@ -10,7 +10,7 @@ export default function UserHome() {
   }, [user, navigate])
   return (
     <div className='user-home mb-auto mt-28 min-h-[60vh] max-w-md md:min-h-[calc(100vh-400px)]'>
-      <h1 className='text-text-gray-200 font-light'>(Signed in as)</h1>
+      <h1 className='font-light text-text-gray-200'>(Signed in as)</h1>
       <h1 className='border-b-2 border-neutral pb-3 text-3xl lg:text-5xl'>
         {user?.name}
       </h1>

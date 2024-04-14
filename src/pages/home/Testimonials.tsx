@@ -100,7 +100,7 @@ function TestimonialCard({
       </div>
       <div className='body mt-2 flex flex-col gap-2'>
         <h3 className='text-lg'>{courseTaken}</h3>
-        <p className='text-text-gray-400 font-light'>{review}</p>
+        <p className='font-light text-text-gray-400'>{review}</p>
       </div>
     </article>
   )

@@ -152,7 +152,7 @@ function CourseCard({ name, rating, cost, description, startDate }: T) {
           <span>${cost}</span>
         </p>
       </div>
-      <div className='course-card-body text-text-gray-400 font-light'>
+      <div className='course-card-body font-light text-text-gray-400'>
         {description}
       </div>
       <div className='course-card-footer flex justify-between'>

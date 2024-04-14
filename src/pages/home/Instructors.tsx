@@ -76,7 +76,7 @@ function InstructorCard({ name, rating, description }: T) {
           </span>
         </p>
       </div>
-      <div className='instructor-card-body text-text-gray-400 font-light'>
+      <div className='instructor-card-body font-light text-text-gray-400'>
         {description}
       </div>
       <div className='instructor-card-footer mx-auto max-w-max'>
