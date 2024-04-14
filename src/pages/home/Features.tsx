@@ -3,6 +3,14 @@ import ExpertHelp from '../../assets/illustrations/ExpertHelp'
 import Personalized from '../../assets/illustrations/Personalized'
 import PageHeading from '../../components/PageHeading'
 import Marquee from 'react-fast-marquee'
+import logo1 from './../../assets/brands/logo1.svg'
+import logo2 from './../../assets/brands/logo2.svg'
+import logo3 from './../../assets/brands/logo3.svg'
+import logo4 from './../../assets/brands/logo4.svg'
+import logo5 from './../../assets/brands/logo5.svg'
+import logo6 from './../../assets/brands/logo6.svg'
+import logo7 from './../../assets/brands/logo7.svg'
+import logo8 from './../../assets/brands/logo8.svg'
 export default function Features() {
   const features = [
     {
@@ -25,6 +33,7 @@ export default function Features() {
     },
   ]
 
+  const logos = [logo1, logo2, logo3, logo4, logo5, logo6, logo7, logo8]
   return (
     <>
       <section className='infinite-brand-slider mx-auto mb-16 mt-24 max-w-max lg:mb-36'>
@@ -32,16 +41,9 @@ export default function Features() {
           Trusted at
         </h2>
         <Marquee>
-          {Array(7)
-            .fill(0)
-            .map((_, i) => (
-              <img
-                key={i}
-                src={`./../../../src/assets/brands/logo${++i}.svg`}
-                alt='brand-image'
-                className='mx-8 h-28 w-28'
-              />
-            ))}
+          {logos.map((x, i) => (
+            <img key={i} src={x} alt='brand-image' className='mx-8 h-28 w-28' />
+          ))}
         </Marquee>
       </section>
       <PageHeading h1='Why choose us' h2='Make the right choice' />
