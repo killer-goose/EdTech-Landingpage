@@ -6,7 +6,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "tsc && npx prettier ./src/**/*.{js,jsx,tsx,ts,css} --write && vite build",
+    "build": "tsc && vite build",
     "format": "npx prettier ./src/**/*.{js,jsx,tsx,ts,css} --write",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview"
