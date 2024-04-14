@@ -23,7 +23,7 @@ export default function Instructors() {
     },
   ]
   return (
-    <section className='instructors'>
+    <section id='instructors' className='instructors scroll-mt-16'>
       <PageHeading
         h1='Get to know our instructors'
         h2='Devoted Mentors, Illuminating Way'

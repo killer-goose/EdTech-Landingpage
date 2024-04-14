@@ -1,0 +1,16 @@
+{
+  "users": {
+    "02ZpAp4jL8epinRL8R9ThfYY6tR2": {
+      "uid": "02ZpAp4jL8epinRL8R9ThfYY6tR2",
+      "name": "Microsoft copilot",
+      "email": "microsoft@copilot.com",
+      "coursesPurchased": ["null"]
+    },
+    "TnQL9ir4yggMbvXnkfksRbc3nB12": {
+      "uid": "TnQL9ir4yggMbvXnkfksRbc3nB12",
+      "name": "abc",
+      "email": "abc@email.com",
+      "coursesPurchased": ["null"]
+    }
+  }
+}

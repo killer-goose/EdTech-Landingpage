@@ -33,7 +33,7 @@ export default function Pricing() {
   ]
 
   return (
-    <section className='Pricing mt-28 lg:mt-44'>
+    <section id='pricing' className='Pricing mb-16 mt-28 scroll-mt-14 lg:mt-44'>
       <PageHeading h1='Pricing' h2='See plans' />
       <p className='mx-auto max-w-3xl text-center font-light text-neutral lg:text-lg'>
         Discover the perfect plan for your needs. Choose from 3 simple pricing

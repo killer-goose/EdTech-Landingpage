@@ -73,6 +73,7 @@ export default function Signin() {
   // Individual level error handling
   const onSubmit: SubmitHandler<TForm> = async ({ email, password }) => {
     let user = undefined
+    let userObj = undefined
     // auth
     try {
       user = await signInFn(email, password)
@@ -88,7 +89,7 @@ export default function Signin() {
 
     // database
     try {
-      const userObj = await getFn(`users/${(user as UserCredential).user.uid}`)
+      userObj = await getFn(`users/${(user as UserCredential).user.uid}`)
       console.log(userObj)
     } catch (err) {
       toast.dismiss()
@@ -103,14 +104,15 @@ export default function Signin() {
       return
     }
 
-    // console.log('This does not run. The function returns in case of error. Not possible with aync-catch')
+    //'This does not run. The function returns in case of error. Not possible with aync-catch'
 
-    // // redirect after a timeout
-    // setTimeout(() => {
-    //   toast.dismiss()
-    //   setUser(userObj)
-    //   navigate('/user')
-    // }, 1000)
+    // redirect after a timeout
+    setTimeout(() => {
+      toast.dismiss()
+      setUser(userObj)
+      navigate('/user')
+      setloginModalOpen(false)
+    }, 300)
   }
   const onError: SubmitErrorHandler<TForm> = (err) => console.warn(err)
 

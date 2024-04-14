@@ -81,7 +81,7 @@ export default function Courses() {
   ]
 
   return (
-    <section className='courses mb-10 mt-24 lg:mt-56'>
+    <section id='courses' className='courses mb-10 mt-24 scroll-mt-16 lg:mt-56'>
       <PageHeading
         h2='Learn anything'
         h1='Choose from a list of 14200 courses'
