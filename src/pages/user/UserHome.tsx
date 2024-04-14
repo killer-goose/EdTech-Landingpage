@@ -14,7 +14,7 @@ export default function UserHome() {
       <h1 className='border-b-2 border-neutral pb-3 text-3xl lg:text-5xl'>
         {user?.name}
       </h1>
-      <div className='mt-4 flex flex-col gap-6 text-xl'>
+      <div className='mt-4 flex flex-col gap-6 text-xl text-neutral'>
         <div>
           <span className='block font-semibold'>Email: </span>
           {user?.email}

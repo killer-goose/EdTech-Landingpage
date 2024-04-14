@@ -9,8 +9,7 @@ const navLinks = [
 ]
 
 export default function Navbar() {
-  const setloginModalOpen = useGlobalStore((state) => state.setloginModalOpen)
-  const user = useGlobalStore((state) => state.user)
+  const { setloginModalOpen, setsignupModalOpen, user } = useGlobalStore()
 
   return (
     // use container margins throughout, at lg, use your own rules
@@ -94,7 +93,7 @@ export default function Navbar() {
             </button>
             <button
               onClick={() => {
-                setloginModalOpen(true)
+                setsignupModalOpen(true)
               }}
               className='btn-neutral-custom text-base'
             >
@@ -108,8 +107,8 @@ export default function Navbar() {
 }
 
 function OffCanvas() {
-  const setloginModalOpen = useGlobalStore((state) => state.setloginModalOpen)
-  const user = useGlobalStore((state) => state.user)
+  const { setloginModalOpen, setsignupModalOpen, user } = useGlobalStore()
+
   const handleClose = () => {
     const checkBoxToggle: any =
       document.getElementsByClassName('drawer-toggle')[0]
@@ -186,7 +185,7 @@ function OffCanvas() {
               <li className='mt-4'>
                 <button
                   onClick={() => {
-                    setloginModalOpen(true)
+                    setsignupModalOpen(true)
                   }}
                   className='btn btn-neutral btn-sm font-normal'
                 >

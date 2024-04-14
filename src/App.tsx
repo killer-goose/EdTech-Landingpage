@@ -9,9 +9,11 @@ import useGlobalStore from './state/GlobalState'
 import UserHome from './pages/user/UserHome'
 import { Toaster } from 'react-hot-toast'
 import Logout from './pages/auth/Logout'
+import Signup from './pages/auth/Signup'
 
 export default function App() {
   const loginModal = useGlobalStore((state) => state.loginModalOpen)
+  const signupModal = useGlobalStore((state) => state.signupModalOpen)
   return (
     <BrowserRouter>
       <Toaster />
@@ -26,6 +28,7 @@ export default function App() {
       </Routes>
       <Footer />
       {loginModal && <Signin />}
+      {signupModal && <Signup />}
     </BrowserRouter>
   )
 }

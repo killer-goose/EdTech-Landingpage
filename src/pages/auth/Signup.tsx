@@ -7,41 +7,47 @@ import { useNavigate } from 'react-router-dom'
 import useGlobalStore from '../../state/GlobalState'
 import ErrorSvg from '../../assets/ErrorSvg'
 import XIcon from '../../assets/XIcon'
-import { signInFn } from '../../firebase/firebaseAuth'
-import { getFn } from '../../firebase/firebaseRealtimeDb'
+import { signUpFn } from '../../firebase/firebaseAuth'
+import { setFn } from '../../firebase/firebaseRealtimeDb'
 import genErrMsg from '../../utils/genErrMsg'
 import { UserCredential } from 'firebase/auth'
 
-export default function Signin() {
+export default function Signup() {
   const navigate = useNavigate()
   const setUser = useGlobalStore((state) => state.setUser)
 
   // modal controls
-  const { loginModalOpen, setloginModalOpen } = useGlobalStore()
+  const { signupModalOpen, setsignupModalOpen } = useGlobalStore()
 
   // append to body if modal toggles
   useEffect(() => {
-    if (loginModalOpen) document.body.classList.add('modal-fix-blur')
+    if (signupModalOpen) document.body.classList.add('modal-fix-blur')
     else document.body.classList.remove('modal-fix-blur')
 
     return () => {
       document.body.classList.remove('modal-fix-blur')
     }
-  }, [loginModalOpen])
+  }, [signupModalOpen])
 
   // handle keyboard event (ESC)
   useEffect(() => {
     const handleKeyDown = (e: any) => {
-      if (e.key == 'Escape') setloginModalOpen(false)
+      if (e.key == 'Escape') setsignupModalOpen(false)
     }
     document.documentElement.addEventListener('keydown', handleKeyDown)
     return () => {
       document.documentElement.removeEventListener('keydown', handleKeyDown)
     }
-  }, [setloginModalOpen])
+  }, [setsignupModalOpen])
 
   // form validation
   const formSchema = z.object({
+    name: z
+      .string()
+      .trim()
+      .toLowerCase()
+      .min(1, 'Please enter your name')
+      .min(5, 'Name must be min 5 characters long'),
     email: z
       .string()
       .trim()
@@ -64,6 +70,7 @@ export default function Signin() {
   } = useForm<TForm>({
     resolver: zodResolver(formSchema),
     defaultValues: {
+      name: '',
       email: '',
       password: '',
     },
@@ -71,14 +78,13 @@ export default function Signin() {
 
   // form submission and db calls
   // Individual level error handling
-  const onSubmit: SubmitHandler<TForm> = async ({ email, password }) => {
+  const onSubmit: SubmitHandler<TForm> = async ({ name, email, password }) => {
     let user = undefined
     let userObj = undefined
     // auth
     try {
-      user = await signInFn(email, password)
-      console.log(user)
-      toast.success('Signed In!')
+      user = await signUpFn(email, password)
+      toast.loading('Creating your account')
     } catch (err) {
       console.error(err)
       toast.error(
@@ -89,8 +95,13 @@ export default function Signin() {
 
     // database
     try {
-      userObj = await getFn(`users/${(user as UserCredential).user.uid}`)
-      console.log(userObj)
+      userObj = {
+        uid: user.user.uid,
+        name,
+        email,
+        coursesPurchased: ['null'],
+      }
+      await setFn(`users/${(user as UserCredential).user.uid}`, userObj)
     } catch (err) {
       toast.dismiss()
       console.error(err)
@@ -104,20 +115,20 @@ export default function Signin() {
       return
     }
 
-    //'This does not run. The function returns in case of error. Not possible with aync-catch'
+    // //'This does not run. The function returns in case of error. Not possible with aync-catch'
 
     // redirect after a timeout
     setTimeout(() => {
       toast.dismiss()
       setUser(userObj)
       navigate('/user')
-      setloginModalOpen(false)
+      setsignupModalOpen(false)
     }, 600)
   }
   const onError: SubmitErrorHandler<TForm> = (err) => console.warn(err)
 
   return (
-    <div className='signin modal-wrapper fixed inset-0 z-20 grid max-h-screen max-w-[100vw] place-content-center overflow-auto bg-white/75 px-4'>
+    <div className='signup modal-wrapper fixed inset-0 z-20 grid max-h-screen max-w-[100vw] place-content-center overflow-auto bg-white/75 px-4'>
       <section className='form smooth-box-shadow relative rounded-md bg-white p-8 shadow-md'>
         <span className='close text-text-gray-200 absolute -bottom-[50%] left-1/2 w-max -translate-x-1/2 rounded-md  p-4 text-sm'>
           <code>[ESC]</code> to close
@@ -125,16 +136,45 @@ export default function Signin() {
 
         <button
           onClick={() => {
-            setloginModalOpen(false)
+            setsignupModalOpen(false)
           }}
           className='close-modal absolute -right-2.5 -top-2.5 rounded-full bg-white'
         >
           <XIcon />
         </button>
-        <h2 className='mb-6 text-2xl font-semibold'>Sign in</h2>
+        <h2 className='mb-6 text-2xl font-semibold'>Signup</h2>
         <form onSubmit={handleSubmit(onSubmit, onError)}>
           <div className='grid gap-y-4'>
+            {/* input name */}
+            <div>
+              <label className='input input-bordered flex items-center gap-2'>
+                <svg
+                  xmlns='http://www.w3.org/2000/svg'
+                  viewBox='0 0 16 16'
+                  fill='currentColor'
+                  className='h-4 w-4 opacity-70'
+                >
+                  <path d='M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6ZM12.735 14c.618 0 1.093-.561.872-1.139a6.002 6.002 0 0 0-11.215 0c-.22.578.254 1.139.872 1.139h9.47Z' />
+                </svg>{' '}
+                <div className='relative'>
+                  <input
+                    {...register('name')}
+                    type='name'
+                    id='name'
+                    name='name'
+                    className='grow'
+                    placeholder='Name'
+                  />
+                  {errors?.name && <ErrorSvg />}
+                </div>
+              </label>
+              <p className='mt-2 text-xs text-red-600' id='name-error'>
+                {errors?.name?.message}
+              </p>
+            </div>
+
             {/* input email */}
+
             <div>
               <label className='input input-bordered flex items-center gap-2'>
                 <svg
@@ -195,33 +235,8 @@ export default function Signin() {
                 {errors?.password?.message}
               </p>
             </div>
-
-            {/* <div>
-              <label
-                htmlFor='password'
-                className='mb-2 block text-sm dark:text-white'
-              >
-                Password
-              </label>
-              <div className='relative'>
-                <input
-                  {...register('password')}
-                  type='password'
-                  id='password'
-                  name='password'
-                  className='focus:border-accent-pink-500 focus:ring-accent-pink-500 block w-full rounded-lg border-gray-200 px-4 py-3 text-sm disabled:pointer-events-none disabled:opacity-50 dark:border-gray-700 dark:bg-slate-900 dark:text-gray-400 dark:focus:ring-gray-600'
-                  aria-describedby='password-error'
-                />
-                {errors?.password && <ErrorSvg />}
-              </div>
-              <p className='mt-2  text-xs text-red-600' id='password-error'>
-                {errors?.password?.message}
-              </p>
-            </div> */}
-            {/* <!-- End Form Group --> */}
-
             <button type='submit' className='btn btn-neutral font-normal'>
-              Sign in
+              Signup
             </button>
           </div>
         </form>
