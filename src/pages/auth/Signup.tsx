@@ -130,7 +130,7 @@ export default function Signup() {
   return (
     <div className='signup modal-wrapper fixed inset-0 z-20 grid max-h-screen max-w-[100vw] place-content-center overflow-auto bg-white/75 px-4'>
       <section className='form smooth-box-shadow relative rounded-md bg-white p-8 shadow-md'>
-        <span className='close absolute -bottom-[50%] left-1/2 w-max -translate-x-1/2 rounded-md p-4  text-sm text-text-gray-200'>
+        <span className='close absolute -bottom-[5rem] left-1/2 w-max -translate-x-1/2 rounded-md p-4  text-sm text-text-gray-200'>
           <code>[ESC]</code> to close
         </span>
 

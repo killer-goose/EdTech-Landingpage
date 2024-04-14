@@ -89,7 +89,7 @@ function PricingCard({
             </li>
           ))}
         </ul>
-        <Link to={linkTo} className='btn-neutral-big-custom !btn-outline mt-8'>
+        <Link to={linkTo} className='btn-neutral-big-custom mt-8'>
           Get it now
         </Link>
       </div>

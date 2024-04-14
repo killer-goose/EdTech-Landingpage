@@ -1,3 +1,5 @@
+import PageHeading from '../../components/PageHeading'
+import Marquee from 'react-fast-marquee'
 export default function Features() {
   const features = [
     {
@@ -16,15 +18,28 @@ export default function Features() {
       body: 'Stay at the forefront of your field with our regularly updated content,  leveraging the latest technologies and methodologies to keep your  learning experience dynamic and relevant.',
     },
   ]
+
   return (
     <>
-      <section className='infinite-brand-slider mx-auto my-28 max-w-max'>
-        <h1 className='text-text-gray mx-auto mb-8 w-max text-lg md:text-xl lg:text-2xl'>
-          Organizations that trust our services
-        </h1>
-        <img src='./../../../src/assets/brands.png' alt='brands' />
+      <section className='infinite-brand-slider mx-auto mb-16 mt-24 max-w-max lg:mb-36'>
+        <h2 className='text-light text-text-gray mx-auto mb-3 max-w-max lg:mb-6 lg:text-lg lg:font-semibold'>
+          Trusted at
+        </h2>
+        <Marquee>
+          {Array(7)
+            .fill(0)
+            .map((_, i) => (
+              <img
+                key={i}
+                src={`./../../../src/assets/brands/logo${++i}.svg`}
+                alt='brand-image'
+                className='mx-8 h-28 w-28'
+              />
+            ))}
+        </Marquee>
       </section>
-      <section className='mt-24 lg:mt-52'>
+      <PageHeading h1='Why choose us' h2='Make the right choice' />
+      <section className='mt-8'>
         {features.map((x, i) => {
           const order = i == 1
           return <FeatureCard {...x} key={i} order={order} />
