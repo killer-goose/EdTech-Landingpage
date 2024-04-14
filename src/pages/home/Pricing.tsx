@@ -73,8 +73,8 @@ function PricingCard({
       className={`smooth-box-shadow flex flex-col overflow-hidden rounded-md ${highlighted && 'border-2 border-neutral lg:scale-[1.1]'}`}
     >
       <div className='flex flex-col items-center justify-center space-y-4 px-2 py-8'>
-        <p className='text-lg font-medium'>{name}</p>
-        <p className='text-5xl font-bold'>
+        <p className='text-lg font-medium text-neutral'>{name}</p>
+        <p className='text-5xl font-semibold'>
           {price}€<span className='text-xl'>{month ? '/mo' : '/yr'}</span>
         </p>
       </div>

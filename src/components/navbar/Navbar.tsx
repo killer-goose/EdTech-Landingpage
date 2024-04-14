@@ -9,7 +9,7 @@ export default function Navbar() {
       {/* hamburger */}
       <label
         htmlFor='my-drawer-4'
-        className='drawer-button btn btn-sm absolute right-4 top-0 sm:hidden'
+        className='btn drawer-button btn-sm absolute right-4 top-0 sm:hidden'
       >
         <svg
           xmlns='http://www.w3.org/2000/svg'
@@ -27,7 +27,7 @@ export default function Navbar() {
         </svg>
       </label>
       <div className='nav-content-wrapper flex justify-between text-base'>
-        <span id='logo' className='w-32 min-w-32'>
+        <span id='logo' className='w-36 min-w-36'>
           <Logo />
         </span>
         <div className='hidden justify-between gap-6 sm:flex'>
@@ -39,7 +39,7 @@ export default function Navbar() {
             <Link
               key={name}
               to={route}
-              className='btn-ghost btn btn-sm font-normal tracking-wider'
+              className='btn btn-ghost btn-sm font-normal tracking-wider'
             >
               {name}
             </Link>
@@ -76,7 +76,7 @@ function OffCanvas() {
           aria-label='close sidebar'
           className='drawer-overlay'
         ></label>
-        <ul className='menu bg-base-200 text-base-content relative min-h-full w-72 p-4 pt-14'>
+        <ul className='menu relative min-h-full w-72 bg-base-200 p-4 pt-14 text-base-content'>
           <span
             className='close-btn btn btn-sm absolute right-2 top-4 z-10 cursor-pointer rounded-full px-1 sm:hidden'
             onClick={handleClose}
@@ -108,12 +108,12 @@ function OffCanvas() {
 
           <li className='mt-auto'>
             {' '}
-            <Link to={'/'} className='btn btn-sm btn-outline font-normal'>
+            <Link to={'/'} className='btn btn-outline btn-sm font-normal'>
               Login
             </Link>
           </li>
           <li className='mt-4'>
-            <Link to={'/'} className='btn btn-sm btn-neutral font-normal'>
+            <Link to={'/'} className='btn btn-neutral btn-sm font-normal'>
               Register
             </Link>
           </li>
