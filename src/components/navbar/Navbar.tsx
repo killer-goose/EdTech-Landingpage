@@ -1,7 +1,9 @@
 import { Link } from 'react-router-dom'
 import Logo from '../../assets/Logo'
+import useGlobalStore from '../../state/GlobalState'
 
 export default function Navbar() {
+  const setloginModalOpen = useGlobalStore((state) => state.setloginModalOpen)
   return (
     // use container margins throughout, at lg, use your own rules
     <nav className='relative mt-6 max-w-[1920px] px-6 md:px-8 lg:px-12'>
@@ -46,12 +48,22 @@ export default function Navbar() {
           ))}
         </div>
         <div className='hidden gap-3 sm:flex'>
-          <Link to={'/'} className='btn-ghost-custom text-base'>
+          <button
+            onClick={() => {
+              setloginModalOpen(true)
+            }}
+            className='btn-ghost-custom text-base'
+          >
             Login
-          </Link>
-          <Link to={'/'} className='btn-neutral-custom text-base'>
+          </button>
+          <button
+            onClick={() => {
+              setloginModalOpen(true)
+            }}
+            className='btn-neutral-custom text-base'
+          >
             Register
-          </Link>
+          </button>
         </div>
       </div>
     </nav>

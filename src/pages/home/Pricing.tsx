@@ -78,7 +78,7 @@ function PricingCard({
           {price}€<span className='text-xl'>{month ? '/mo' : '/yr'}</span>
         </p>
       </div>
-      <div className='flex flex-col items-center justify-center bg-neutral-content px-2 py-8'>
+      <div className='flex flex-col items-center justify-center bg-base-200 px-2 py-8'>
         <ul className='mx-auto my-4 flex w-max flex-1 flex-col gap-4 self-stretch'>
           {features.map((x, i) => (
             <li key={i} className='flex gap-1 '>

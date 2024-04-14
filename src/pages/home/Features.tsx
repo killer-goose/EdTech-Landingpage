@@ -18,7 +18,7 @@ export default function Features() {
   ]
   return (
     <>
-      <section className='infinite-brand-slider mx-auto my-28 max-w-max border'>
+      <section className='infinite-brand-slider mx-auto my-28 max-w-max'>
         <h1 className='mx-auto mb-8 w-max text-lg text-text-gray md:text-xl lg:text-2xl'>
           Organizations that trust our services
         </h1>

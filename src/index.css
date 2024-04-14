@@ -23,6 +23,20 @@ body {
   font-family: 'Kanit', sans-serif;
 }
 
+.modal-fix-blur {
+  height: 100vh;
+  overflow-y: hidden;
+}
+.modal-fix-blur::before {
+  position: fixed;
+  content: '';
+  filter: blur(0.5);
+  backdrop-filter: blur(10px);
+  inset: 0;
+  z-index: 10;
+  height: 100vh;
+}
+
 /* credits: https://shadows.brumm.af/ */
 .smooth-box-shadow {
   box-shadow:
