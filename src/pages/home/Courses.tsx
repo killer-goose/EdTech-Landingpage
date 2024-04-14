@@ -81,13 +81,13 @@ export default function Courses() {
   ]
 
   return (
-    <section id='courses' className='courses mb-10 mt-24 scroll-mt-16 lg:mt-56'>
+    <section id='courses' className='courses mb-10 mt-24 scroll-mt-16 lg:mt-48'>
       <PageHeading
         h2='Learn anything'
         h1='Choose from a list of 14200 courses'
       />
 
-      <div className='badge-group mx-auto mb-16 flex max-w-max flex-wrap items-center gap-2 lg:gap-3'>
+      <div className='badge-group mx-auto mb-16 mt-20 flex max-w-max flex-wrap items-center gap-2 lg:gap-3'>
         {categories.map((x, i) => (
           <div
             key={i}
@@ -152,7 +152,7 @@ function CourseCard({ name, rating, cost, description, startDate }: T) {
           <span>${cost}</span>
         </p>
       </div>
-      <div className='course-card-body font-light text-text-gray-400'>
+      <div className='course-card-body text-text-gray-400 font-light'>
         {description}
       </div>
       <div className='course-card-footer flex justify-between'>

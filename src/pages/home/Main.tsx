@@ -1,7 +1,9 @@
+import HomeSvg from '../../assets/illustrations/HomeSvg'
+
 export default function Main() {
   return (
     //  min-h-[calc(100vh-5rem-24px-32px)]
-    <main className='mb-10 mt-14 grid grid-rows-2 gap-16 lg:mt-20 lg:grid-cols-2 lg:grid-rows-1 lg:gap-32 lg:py-32'>
+    <main className='mb-10 mt-14 grid grid-rows-2 items-center gap-16 lg:mt-20 lg:grid-cols-2 lg:grid-rows-1 lg:gap-32 lg:py-8'>
       <section className='hero-text order-2 flex flex-col gap-6 sm:mx-auto sm:max-w-md sm:text-center lg:order-1 lg:mx-[unset] lg:max-w-[unset] lg:gap-10 lg:text-left'>
         <div>
           <h1 className='text-3xl lg:text-5xl'>Sharpen your skills</h1>
@@ -35,7 +37,9 @@ export default function Main() {
           </button>
         </div>
       </section>
-      <section className='hero-img h-full w-full max-w-md rounded-lg bg-gray-500 sm:mx-auto sm:text-center lg:order-2 lg:mx-[unset] lg:max-w-[unset] lg:text-left'></section>
+      <section className='hero-img h-full w-full max-w-md rounded-lg sm:mx-auto sm:text-center lg:order-2 lg:mx-[unset] lg:max-w-[unset] lg:text-left'>
+        <HomeSvg />
+      </section>
     </main>
   )
 }
