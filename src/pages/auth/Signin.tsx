@@ -2,20 +2,22 @@ import { useForm, SubmitHandler, SubmitErrorHandler } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import z from 'zod'
 import toast from 'react-hot-toast'
-import { useEffect, useState } from 'react'
-import { Link, useNavigate } from 'react-router-dom'
-// import { signInFn } from '../../firebase/firebaseAuth'
-
+import { useEffect } from 'react'
+import { useNavigate } from 'react-router-dom'
 import useGlobalStore from '../../state/GlobalState'
 import ErrorSvg from '../../assets/ErrorSvg'
 import XIcon from '../../assets/XIcon'
-// import { getFn } from '../../firebase/firebaseDb'
+import { signInFn } from '../../firebase/firebaseAuth'
+import { getFn } from '../../firebase/firebaseRealtimeDb'
+import genErrMsg from '../../utils/genErrMsg'
+import { UserCredential } from 'firebase/auth'
 
 export default function Signin() {
+  const navigate = useNavigate()
+  const setUser = useGlobalStore((state) => state.setUser)
+
   // modal controls
   const { loginModalOpen, setloginModalOpen } = useGlobalStore()
-  console.log(loginModalOpen)
-  // e: React.KeyboardEvent<HTMLDivElement>
 
   // append to body if modal toggles
   useEffect(() => {
@@ -38,14 +40,7 @@ export default function Signin() {
     }
   }, [setloginModalOpen])
 
-  // const auth = useGlobalStore((state) => state.auth)
-  // const setAuth = useGlobalStore((state) => state.setAuth)
-  // const setUser = useGlobalStore((state) => state.setUser)
-  // const navigate = useNavigate()
-  // useEffect(() => {
-  //   if (auth) navigate('/')
-  // }, [auth])
-
+  // form validation
   const formSchema = z.object({
     email: z
       .string()
@@ -74,29 +69,48 @@ export default function Signin() {
     },
   })
 
-  const onSubmit: SubmitHandler<TForm> = ({ email, password }) => {
-    console.log({ email, password })
+  // form submission and db calls
+  // Individual level error handling
+  const onSubmit: SubmitHandler<TForm> = async ({ email, password }) => {
+    let user = undefined
+    // auth
+    try {
+      user = await signInFn(email, password)
+      console.log(user)
+      toast.success('Signed In!')
+    } catch (err) {
+      console.error(err)
+      toast.error(
+        <p className='text-center text-sm'>{genErrMsg(err as string)}</p>,
+      )
+      return // return from the function to prevent errors down the code
+    }
 
-    // --- Send to db ---
-    // signInFn(email, password)
-    //   .then((user) => {
-    //     toast.success('Signed In!')
+    // database
+    try {
+      const userObj = await getFn(`users/${(user as UserCredential).user.uid}`)
+      console.log(userObj)
+    } catch (err) {
+      toast.dismiss()
+      console.error(err)
+      if (typeof err == 'string')
+        toast.error(<p className='text-center text-sm'>{err as string}</p>)
+      else
+        toast.error(
+          <p className='text-center text-sm'>Unknown error, check console</p>,
+        )
 
-    //     // get user from db
-    //     getFn(`users/${user.user.uid}`).then((userObj) => {
-    //       // set user in context
-    //       setUser(userObj)
+      return
+    }
 
-    //       // redirect after a timeout [NEED ANIMATION]
-    //       setTimeout(() => {
-    //         toast.dismiss()
-    //         setAuth(true)
-    //       }, 1000)
-    //     })
-    //   })
-    //   .catch((message) => {
-    //     toast.error(<p className='text-center text-sm'>{genErrMsg(message)}</p>)
-    //   })
+    // console.log('This does not run. The function returns in case of error. Not possible with aync-catch')
+
+    // // redirect after a timeout
+    // setTimeout(() => {
+    //   toast.dismiss()
+    //   setUser(userObj)
+    //   navigate('/user')
+    // }, 1000)
   }
   const onError: SubmitErrorHandler<TForm> = (err) => console.warn(err)
 
