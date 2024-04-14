@@ -2,6 +2,7 @@ import Courses from './Courses'
 import Features from './Features'
 import Instructors from './Instructors'
 import Main from './Main'
+import Pricing from './Pricing'
 import Stats from './Stats'
 import Testimonials from './Testimonials'
 
@@ -14,6 +15,7 @@ export default function Home() {
       <Stats />
       <Instructors />
       <Testimonials />
+      <Pricing />
     </>
   )
 }

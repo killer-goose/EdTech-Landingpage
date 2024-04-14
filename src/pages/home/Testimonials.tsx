@@ -46,7 +46,7 @@ export default function Testimonials() {
     },
   ]
   return (
-    <section className='testimonials mt-28 lg:mt-48'>
+    <section className='testimonials mt-28 lg:mt-44'>
       <PageHeading h1='Testimonials' h2='Student voices' />
       <p className='mx-auto max-w-3xl text-center font-light text-neutral lg:text-lg'>
         Don’t just take our word for it. Hear from our students from all walks
