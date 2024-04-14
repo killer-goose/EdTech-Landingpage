@@ -36,7 +36,7 @@ export default function Features() {
   const logos = [logo1, logo2, logo3, logo4, logo5, logo6, logo7, logo8]
   return (
     <>
-      <section className='infinite-brand-slider mx-auto mb-16 mt-24 max-w-max lg:mb-36'>
+      <section className='infinite-brand-slider mx-auto mb-24 mt-12 max-w-max lg:mb-36'>
         <h2 className='text-light mx-auto mb-3 max-w-max text-text-gray lg:mb-6 lg:text-lg lg:font-semibold'>
           Trusted at
         </h2>
@@ -47,7 +47,7 @@ export default function Features() {
         </Marquee>
       </section>
       <PageHeading h1='Why choose us' h2='Make the right choice' />
-      <section className='mt-8'>
+      <section className='mt-16 lg:mt-20'>
         {features.map((x, i) => {
           const order = i == 1
           return <FeatureCard {...x} key={i} order={order} />
