@@ -1,8 +1,10 @@
 <h1 align="center">StudyForge</h1>
 
-<p align="center">Landing page for an edtech platform &nbsp;Designed in Figma.</p>
+> <p align="center">Landing page for an edtech platform &nbsp;Designed in Figma.</p>
 
 ## [Demo](https://studyforge-edtech.vercel.app/)
+![image](https://github.com/killer-goose/EdTech-Landingpage/assets/152170803/fb16d0f2-50aa-4c5c-a749-a337dbe14649)
+
 
 ## Features
 
@@ -73,8 +75,7 @@ pnpm dev
 
 - Website: [Link](okay-head.netlify.app)
 - Twitter: [@shash0_0](https://twitter.com/shash0_0)
-  or better yet
-- Mastadon: [quacko](https://mastodon.social/@mymind_is_a_mush)
+- Mastadon: [quacko](https://mastodon.social/@mymind_is_a_mush) 🦆
 - Github: [@okay-head](https://github.com/okay-head)
 
 ## Show your support
